@@ -1,6 +1,6 @@
-# Spark dating app project — Vibely v0.19.0
+# Spark dating app project — Vibely v0.20.0
 
-This folder contains Vibely v0.19.0: the mobile-first Spark beta connected to the separate `sparkapp` Supabase project (`qhnynlpnqsmytpodzmbx`).
+This folder contains Vibely v0.20.0: the mobile-first Spark beta connected to the separate `sparkapp` Supabase project (`qhnynlpnqsmytpodzmbx`).
 
 ## Put this project in the requested folder
 
@@ -21,6 +21,8 @@ Keep the files together in that folder. In the existing VS Code terminal, run `p
 - Database-enforced sending limits of 25 intros per 24 hours and 30 messages per minute per member, with duplicate-submit protection in the browser.
 - Two-sided chat bubbles with sender labels, safe clickable HTTPS links, emoji picker, photo/camera attachment, and recorded voice notes. Private match-only media is limited to 5 MiB per file.
 - A Private Activity premium add-on design and database-enforced read-receipt privacy. Only a trusted entitlement can unlock its profile toggle; checkout is not yet active.
+- Searchable chats, private pin and mute controls, and message reactions. Muting suppresses the global unread badge for that conversation while keeping the count inside chat.
+- Message reports now accept category and message ID correctly; reported chat media is captured from the database and made available to moderators for review.
 - Optional social profile links with per-link Hidden, Matches only, and All signed-in members visibility.
 - Up to four photos per member in a private Supabase bucket, with a selectable cover photo. Signed-in, unblocked members can browse the gallery.
 - Safety & privacy page to review blocked members, unblock them, and end active matches.

@@ -1,4 +1,4 @@
-# Vibely v0.19.0 build notes
+# Vibely v0.20.0 build notes
 
 This build uses the Spark Supabase project `qhnynlpnqsmytpodzmbx`. The app offers email and password sign-up, confirmation links, password recovery, profile setup for adults, photo galleries, discovery preferences, social profile links with per-link visibility, intro requests, accepted matches, chat, reporting, blocking, moderator review, and self-service account deletion.
 
@@ -33,6 +33,12 @@ Messages identify the sender and use separate left and right layouts. The compos
 ## Private Activity add-on
 
 The premium and profile screens show an optional, separately entitled Private Activity setting. It is locked unless trusted billing code grants a nonexpired entitlement; the browser cannot grant or extend one. When enabled, opening an incoming message writes a private view marker for the recipient's unread badge but does not stamp a public `read_at` receipt. The database read trigger also rejects direct attempts to stamp a receipt while the mode is active. Switching the setting off does not reveal reads that happened in private mode; earlier public Seen receipts remain visible. There is no online status, last seen, typing indicator, checkout, or price in this beta. Migration: `supabase/20261123_private_activity.sql`. Billing webhook provisioning and a live paid-account test remain pending.
+
+## Conversation tools and reporting
+
+Members can pin or mute a match privately, search by name or recent message, and react to a message with one of six emojis. Pinned chats sort first; muted chats keep their own unread count but do not contribute to the global Chats badge. Database policies restrict reaction reads and writes to active matched participants and conversation controls to their owner. Migration: `supabase/20261123_conversation_tools.sql`.
+
+The report insert privilege was missing the `category` and `message_id` columns; those grants are repaired. A message report captures its attachment path and type from the verified message on the server. A moderator can review the reported photo or voice note even if the match is later blocked. Ordinary members cannot forge media evidence or access another match's media. Migration: `supabase/20261123_report_media_fix.sql`. A real moderator account is still needed for end-to-end review.
 
 ## Run locally
 
