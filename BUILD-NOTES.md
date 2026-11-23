@@ -1,6 +1,8 @@
-# Vibely v0.4.0 build notes
+# Vibely v0.5.0 build notes
 
-This build uses the connected Spark Supabase project `qhnynlpnqsmytpodzmbx`. All database objects are prefixed `spark_`, and every public table has Row Level Security enabled. The browser includes only the public project URL and publishable key in `config.js`. Never put a secret or service-role key in the browser or repository.
+This build uses the connected Spark Supabase project `qhnynlpnqsmytpodzmbx`. Social links are stored in `spark_social_links` with RLS-enforced visibility and a default of Hidden. Pasted links are not identity verification.
+
+All database objects are prefixed `spark_`, and every public table has Row Level Security enabled. The browser includes only the public project URL and publishable key in `config.js`. Never put a secret or service-role key in the browser or repository.
 
 ## Run locally
 
