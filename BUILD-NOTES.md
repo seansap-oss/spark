@@ -1,10 +1,14 @@
-# Vibely v0.14.0 build notes
+# Vibely v0.15.0 build notes
 
 This build uses the Spark Supabase project `qhnynlpnqsmytpodzmbx`. The app offers email and password sign-up, confirmation links, password recovery, profile setup for adults, photo galleries, discovery preferences, social profile links with per-link visibility, intro requests, accepted matches, chat, reporting, blocking, moderator review, and self-service account deletion.
 
 ## Email confirmation
 
 After sign-up without a session, members see a confirmation screen with their email and a resend action. An unconfirmed sign-in opens the same screen. Resend uses Supabase `/auth/v1/resend` with `type: signup` and a return URL to this app; the UI waits at least a minute between requests. Real email delivery and redirect configuration still require testing with a mailbox.
+
+## Profile personality
+
+Members may select up to five of twelve interests and answer one optional conversation prompt. The profile editor, own profile and discovery card show the saved data. The database limits allowed tags and answer length. Older profiles receive empty defaults. Migration: `supabase/20261123_profile_personality.sql`.
 
 ## Chat inbox
 
