@@ -1,0 +1,10 @@
+{
+  "name": "Vibely — Meet at your own pace",
+  "short_name": "Vibely",
+  "description": "Chat as friends. When the vibe is right, something serious can happen.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#faf8f7",
+  "theme_color": "#f44982",
+  "icons": [{ "src": "vibely-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
