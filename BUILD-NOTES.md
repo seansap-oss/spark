@@ -1,6 +1,6 @@
-# Vibely v0.7.0 build notes
+# Vibely v0.8.0 build notes
 
-This build uses the connected Spark Supabase project `qhnynlpnqsmytpodzmbx`. Social links are stored in `spark_social_links` with RLS-enforced visibility and a default of Hidden. Pasted links are not identity verification. Up to four profile photos use the private `spark-profile-photos` bucket and `spark_profile_photos` table; `spark_profiles.photo_path` marks the cover photo. The browser resizes images to WebP. Members can review blocks, unblock, and end matches in Safety & privacy.
+This build uses the connected Spark Supabase project `qhnynlpnqsmytpodzmbx`. Social links are stored in `spark_social_links` with RLS-enforced visibility and a default of Hidden. Pasted links are not identity verification. Up to four profile photos use the private `spark-profile-photos` bucket and `spark_profile_photos` table; `spark_profiles.photo_path` marks the cover photo. The browser resizes images to WebP. Members can review blocks, unblock, and end matches in Safety & privacy. Moderators can review reports and pause/restore accounts; role membership is never self-service. The sidebar uses the signed-in member name, city, and real incoming intro count.
 
 All database objects are prefixed `spark_`, and every public table has Row Level Security enabled. The browser includes only the public project URL and publishable key in `config.js`. Never put a secret or service-role key in the browser or repository.
 
@@ -14,4 +14,4 @@ Sign up using an email address and password, confirm email if requested, then co
 
 ## Before a public launch
 
-Set the production Site URL and allowed redirect URLs in Supabase Auth URL Configuration after Vercel is deployed. Test email confirmation, gallery upload, unblocking, and ending a match on the final domain. Profiles currently rely on self-declared age; there is no verification provider, moderation dashboard, billing, or account deletion flow yet. The old v0.3.0 sample prototype remains in `app.js` as fallback if the live configuration is removed; the online beta renders from `live.js` when `config.js` is present.
+Set the production Site URL and allowed redirect URLs in Supabase Auth URL Configuration after Vercel is deployed. Test email confirmation, gallery upload, unblocking, ending a match, and moderation on the final domain. To make the owner a moderator after their Spark account exists, the project owner can add that account's `auth.users.id` to `public.spark_moderators` in the Supabase SQL editor. No moderator has been assigned by this build. Profiles still rely on self-declared age; there is no verification provider, billing, or account deletion flow yet. The old v0.3.0 sample prototype remains in `app.js` as fallback if the live configuration is removed; the online beta renders from `live.js` when `config.js` is present.

@@ -1,4 +1,4 @@
-const CACHE='vibely-v0.7.0';
+const CACHE='vibely-v0.8.0';
 const CORE=['./','./index.html','./styles.css','./premium.css','./live.css','./config.js','./live.js','./app.js','./manifest.webmanifest','./vibely-icon.svg'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
