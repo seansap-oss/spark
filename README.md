@@ -1,6 +1,6 @@
-# Spark dating app project — Vibely v0.11.0
+# Spark dating app project — Vibely v0.11.1
 
-This folder contains Vibely v0.11.0: the mobile-first Spark beta connected to the separate `sparkapp` Supabase project (`qhnynlpnqsmytpodzmbx`).
+This folder contains Vibely v0.11.1: the mobile-first Spark beta connected to the separate `sparkapp` Supabase project (`qhnynlpnqsmytpodzmbx`).
 
 ## Put this project in the requested folder
 
