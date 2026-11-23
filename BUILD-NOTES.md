@@ -1,4 +1,4 @@
-# Vibely v0.21.0 build notes
+# Vibely v0.22.0 build notes
 
 This build uses the Spark Supabase project `qhnynlpnqsmytpodzmbx`. The app offers email and password sign-up, confirmation links, password recovery, profile setup for adults, photo galleries, discovery preferences, social profile links with per-link visibility, intro requests, accepted matches, chat, reporting, blocking, moderator review, and self-service account deletion.
 
@@ -42,11 +42,15 @@ The report insert privilege was missing the `category` and `message_id` columns;
 
 ## Owner console and member outreach
 
-The footer © opens an owner PIN prompt after a five-second hold without press feedback. The PIN hash is stored privately in Supabase, never in browser code or this repository. The owner must also be a signed-in member assigned to `spark_owners`; the 30-minute server unlock is required for all pricing and campaign writes. Five failures lock attempts for fifteen minutes. No owner has been assigned yet; choose the owner test account before using the console. Migration: `supabase/20261123_owner_console.sql`. The actual PIN hash was provisioned directly into the private schema without recording the password in a migration file.
+The footer © opens an owner PIN prompt after a five-second hold without press feedback. The PIN hash is stored privately in Supabase, never in browser code or this repository. The owner must also be a signed-in member assigned to `spark_owners`; the 30-minute server unlock is required for all pricing and campaign writes. Five failures lock attempts for fifteen minutes. The confirmed avit test account has been assigned as owner; verify the browser sign-in and PIN flow on the live site. Migration: `supabase/20261123_owner_console.sql`. The actual PIN hash was provisioned directly into the private schema without recording the password in a migration file.
 
 The console edits per-currency INR/USD/AUD monthly or yearly plan prices, benefits and descriptions, and scheduled percentage campaign drafts. The member premium screen reads the active prices and campaigns. Checkout and redemption-limit enforcement are not connected. The console lists aggregate member intros, matches, messages and last saved activity, which does not prove app presence. Members opt in to at most two official in-app product notices per week; these appear on their profile and never impersonate a match. No notices were sent by this build.
 
 `supabase/20261123_discovery_tiers.sql` adds payment-provisioned member tier entitlements and a server-filtered discovery weight. Three paid candidates may appear before one rotating Basic candidate, subject to each member's filters and visibility. No paid membership was provisioned. No verification claim or guaranteed likes are generated.
+
+## Profile history
+
+My profile now includes dated Timeline, Sent, Received, Passed, Chats, Blocked, and Gifts tabs, plus real intro, match, chat and pass counts. Intro and block timestamps were already stored; future accepted/declined matches get server timestamps and future Pass actions are saved per member. Historical accepted matches have no known acceptance timestamp and are not assigned an invented date. The first chat date and message count come from a caller-scoped aggregate. Gifts remain an honest empty state until checkout and recipient consent exist. Migration: `supabase/20261124_activity_history.sql`. The owner account is now assigned to the confirmed `avit` profile and the private PIN hash is configured; no live owner browser session was used in this build.
 
 ## Run locally
 

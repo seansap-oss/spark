@@ -1,6 +1,6 @@
-# Spark dating app project — Vibely v0.21.0
+# Spark dating app project — Vibely v0.22.0
 
-This folder contains Vibely v0.21.0: the mobile-first Spark beta connected to the separate `sparkapp` Supabase project (`qhnynlpnqsmytpodzmbx`).
+This folder contains Vibely v0.22.0: the mobile-first Spark beta connected to the separate `sparkapp` Supabase project (`qhnynlpnqsmytpodzmbx`).
 
 ## Put this project in the requested folder
 
@@ -25,6 +25,7 @@ Keep the files together in that folder. In the existing VS Code terminal, run `p
 - Message reports now accept category and message ID correctly; reported chat media is captured from the database and made available to moderators for review.
 - Hidden five-second © owner entry with a server-side PIN gate, plan pricing editor, festival campaigns, member activity overview, and consent-based official notices. The member plan screen reflects saved prices and active offers.
 - Prepared paid-tier discovery weighting with rotating Basic exposure. A payment service must provision entitlements; no test member was upgraded automatically.
+- Private profile activity history with dated intros, future passes and match decisions, first chat dates, blocks, and an honest Gifts empty state.
 - Optional social profile links with per-link Hidden, Matches only, and All signed-in members visibility.
 - Up to four photos per member in a private Supabase bucket, with a selectable cover photo. Signed-in, unblocked members can browse the gallery.
 - Safety & privacy page to review blocked members, unblock them, and end active matches.
