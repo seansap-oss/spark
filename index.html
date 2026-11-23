@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="premium.css" />
-  <link rel="stylesheet" href="live.css?v=0.11.1" />
+  <link rel="stylesheet" href="live.css?v=0.12.0" />
 </head>
 <body>
   <div class="app-shell">
@@ -26,7 +26,7 @@
       <nav class="side-nav" aria-label="Main navigation">
         <button class="nav-item active" data-view="discover"><span class="nav-icon">⌕</span><span>Discover</span></button>
         <button class="nav-item" data-view="likes"><span class="nav-icon">♡</span><span>Likes & intros</span><span class="nav-count" id="likesCount" data-likes-count hidden></span></button>
-        <button class="nav-item" data-view="chats"><span class="nav-icon">▱</span><span>Chats</span><span class="nav-dot"></span></button>
+        <button class="nav-item" data-view="chats"><span class="nav-icon">▱</span><span>Chats</span><span class="nav-count" data-chat-count hidden></span></button>
       </nav>
       <div class="side-label side-label-spaced">MORE FOR YOU</div>
       <nav class="side-nav" aria-label="More navigation">
@@ -47,7 +47,7 @@
       <nav class="mobile-nav" aria-label="Mobile navigation">
         <button class="mobile-nav-item active" data-view="discover"><span>⌕</span><small>Discover</small></button>
         <button class="mobile-nav-item" data-view="likes"><span>♡<i class="mobile-badge" data-likes-count hidden></i></span><small>Likes</small></button>
-        <button class="mobile-nav-item" data-view="chats"><span>▱</span><small>Chats</small></button>
+        <button class="mobile-nav-item" data-view="chats"><span>▱<i class="mobile-badge" data-chat-count hidden></i></span><small>Chats</small></button>
         <button class="mobile-nav-item" data-view="premium"><span>♛</span><small>Plus</small></button>
         <button class="mobile-nav-item" data-view="profile"><span>◉</span><small>Profile</small></button>
       </nav>
@@ -57,7 +57,7 @@
   <div id="modalRoot"></div>
   <div class="toast" id="toast" role="status"></div>
   <script src="config.js"></script>
-  <script src="live.js?v=0.11.1"></script>
+  <script src="live.js?v=0.12.0"></script>
   <script src="app.js"></script>
   <script>window.sparkLive?.start();</script>
   <script>if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});</script>
