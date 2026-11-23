@@ -1,17 +1,15 @@
-# Vibely v0.3.0 development notes
+# Vibely v0.4.0 build notes
 
-This package builds on the original Spark source. Keep every file together in `D:\Spark dating app`.
+This build uses the connected Spark Supabase project `qhnynlpnqsmytpodzmbx`. All database objects are prefixed `spark_`, and every public table has Row Level Security enabled. The browser includes only the public project URL and publishable key in `config.js`. Never put a secret or service-role key in the browser or repository.
 
-## Run in the existing VS Code terminal
+## Run locally
 
-From `D:\Spark dating app`, run `py -m http.server 5173`, then open `http://localhost:5173/`. If `py` is unavailable, use `python -m http.server 5173`. Press Ctrl+C to stop.
+Keep this project in `D:\Spark dating app`. In the existing VS Code terminal run `py -m http.server 5173 --directory "D:\Spark dating app"`, then open `http://localhost:5173/`. The app needs internet access to use Supabase. Refresh after an update to let the service worker replace old assets.
 
-Extract the ZIP contents into the same project folder, replacing the older files. If the browser shows old code after upgrading, refresh once while online so the v0.3.0 service worker replaces its cache.
+## Connected features
 
-## This build
+Sign up using an email address and password, confirm email if requested, then complete a profile with age 18+. A second adult test account can browse that profile, send an intro, and receive acceptance. Only an accepted request permits messages. Chat checks for new messages every five seconds. Blocking hides a profile and stops messages for both sides. Reports are saved for later moderation review.
 
-The demo keeps sent likes and intros, discovery preferences, hidden and blocked profiles, and a report log on this device. Discovery respects age, distance and gender settings. Sent intros are shown in Likes & intros. Blocking removes a demo conversation and hides that person from discovery. Profile verification and checkout remain honest previews: neither can grant a real badge nor activate a purchase. The new `premium.css` refreshes the fonts, profile card, navigation, buttons, and responsive layout.
+## Before a public launch
 
-## Launch requirements
-
-This is still a local browser prototype. Authentication, cross-device chat, real user profiles and matching, server-side reports/moderation, identity review, privacy enforcement and payments require a backend and provider configuration before public launch. Demo profiles and message threads are fictional. Never collect real identity documents or payments in this build.
+Set the production Site URL and allowed redirect URLs in Supabase Auth URL Configuration after Vercel is deployed. Test email confirmation on the final domain. Profiles currently rely on self-declared age; there is no verification provider, photo upload, moderation dashboard, billing, or account deletion flow yet. The old v0.3.0 sample prototype remains in `app.js` as fallback if the live configuration is removed; the online beta renders from `live.js` when `config.js` is present.
