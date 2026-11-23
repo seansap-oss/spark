@@ -42,3 +42,6 @@
 
 .live-auth-form .live-forgot{display:block;margin-top:0;padding-top:2px;color:#a44c81}
 .live-attachment-preview img{width:42px;height:42px;border-radius:8px;object-fit:cover}
+/* Paid privacy setting and premium card. */
+.live-private-card,.live-premium-hero{position:relative;margin:24px 0;padding:22px;border:1px solid #ecd5f0;border-radius:19px;background:radial-gradient(circle at 90% 0%,#ffe5f0,transparent 45%),linear-gradient(130deg,#fff9fb,#f5efff);box-shadow:0 14px 30px #7541b016}
+.live-private-card h3,.live-premium-hero h2{font:800 21px Manrope,sans-serif;margin:10px 0 6px;color:#342345}.live-private-card p,.live-premium-hero p{font-size:13px;line-height:1.6;color:#6f5d7a}.live-private-badge{display:inline-block;padding:5px 9px;border-radius:99px;background:#7c43c5;color:#fff;font-size:10px;font-weight:800;letter-spacing:.09em}.live-private-state{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:17px 0 10px;font-size:12px;font-weight:800;color:#733d9e}.live-private-card small,.live-premium-hero small{display:block;font-size:11px;line-height:1.5;color:#87778f}.live-premium-hero{max-width:740px;padding:27px}.live-premium-hero strong{display:block;margin:17px 0;color:#8c45bc}.live-premium-hero button{margin-top:18px}
