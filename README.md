@@ -1,6 +1,6 @@
-# Spark dating app project — Vibely v0.9.0
+# Spark dating app project — Vibely v0.10.0
 
-This folder contains Vibely v0.9.0: the mobile-first Spark beta connected to the separate `sparkapp` Supabase project (`qhnynlpnqsmytpodzmbx`).
+This folder contains Vibely v0.10.0: the mobile-first Spark beta connected to the separate `sparkapp` Supabase project (`qhnynlpnqsmytpodzmbx`).
 
 ## Put this project in the requested folder
 
@@ -23,6 +23,7 @@ Keep the files together in that folder. In the existing VS Code terminal, run `p
 - Moderator-only report queue with reviewed/dismissed decisions and temporary profile pause/restore. Moderator membership is assigned in Supabase by the project owner, not by users.
 - Sidebar identity and pending-intro badges use live account data rather than sample names or counts.
 - Self-service account deletion from Safety & privacy, with a typed confirmation and server-side removal of photos and the Auth user.
+- Saved discovery filters for age, gender, city and relationship goal; a Pause discovery switch hides a member from new people while preserving existing matches.
 - Row access rules for every public Spark table; the browser uses only the publishable key.
 - Responsive desktop and mobile layouts with a mobile navigation bar.
 - Coral and violet visual system in `premium.css` and `live.css`.
