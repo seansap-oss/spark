@@ -1,4 +1,4 @@
-# Vibely v0.20.0 build notes
+# Vibely v0.21.0 build notes
 
 This build uses the Spark Supabase project `qhnynlpnqsmytpodzmbx`. The app offers email and password sign-up, confirmation links, password recovery, profile setup for adults, photo galleries, discovery preferences, social profile links with per-link visibility, intro requests, accepted matches, chat, reporting, blocking, moderator review, and self-service account deletion.
 
@@ -39,6 +39,14 @@ The premium and profile screens show an optional, separately entitled Private Ac
 Members can pin or mute a match privately, search by name or recent message, and react to a message with one of six emojis. Pinned chats sort first; muted chats keep their own unread count but do not contribute to the global Chats badge. Database policies restrict reaction reads and writes to active matched participants and conversation controls to their owner. Migration: `supabase/20261123_conversation_tools.sql`.
 
 The report insert privilege was missing the `category` and `message_id` columns; those grants are repaired. A message report captures its attachment path and type from the verified message on the server. A moderator can review the reported photo or voice note even if the match is later blocked. Ordinary members cannot forge media evidence or access another match's media. Migration: `supabase/20261123_report_media_fix.sql`. A real moderator account is still needed for end-to-end review.
+
+## Owner console and member outreach
+
+The footer © opens an owner PIN prompt after a five-second hold without press feedback. The PIN hash is stored privately in Supabase, never in browser code or this repository. The owner must also be a signed-in member assigned to `spark_owners`; the 30-minute server unlock is required for all pricing and campaign writes. Five failures lock attempts for fifteen minutes. No owner has been assigned yet; choose the owner test account before using the console. Migration: `supabase/20261123_owner_console.sql`. The actual PIN hash was provisioned directly into the private schema without recording the password in a migration file.
+
+The console edits per-currency INR/USD/AUD monthly or yearly plan prices, benefits and descriptions, and scheduled percentage campaign drafts. The member premium screen reads the active prices and campaigns. Checkout and redemption-limit enforcement are not connected. The console lists aggregate member intros, matches, messages and last saved activity, which does not prove app presence. Members opt in to at most two official in-app product notices per week; these appear on their profile and never impersonate a match. No notices were sent by this build.
+
+`supabase/20261123_discovery_tiers.sql` adds payment-provisioned member tier entitlements and a server-filtered discovery weight. Three paid candidates may appear before one rotating Basic candidate, subject to each member's filters and visibility. No paid membership was provisioned. No verification claim or guaranteed likes are generated.
 
 ## Run locally
 
