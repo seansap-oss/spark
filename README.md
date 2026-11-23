@@ -1,6 +1,6 @@
-# Spark dating app project — Vibely v0.15.0
+# Spark dating app project — Vibely v0.16.0
 
-This folder contains Vibely v0.15.0: the mobile-first Spark beta connected to the separate `sparkapp` Supabase project (`qhnynlpnqsmytpodzmbx`).
+This folder contains Vibely v0.16.0: the mobile-first Spark beta connected to the separate `sparkapp` Supabase project (`qhnynlpnqsmytpodzmbx`).
 
 ## Put this project in the requested folder
 
@@ -17,7 +17,7 @@ Keep the files together in that folder. In the existing VS Code terminal, run `p
 - Email and password sign-up, a confirmation screen with resend, sign-in, session refresh, and profile setup for adults.
 - Password recovery by email with an in-app new-password form; email confirmation links return to the app.
 - Discovery from real registered profiles, with optional interests and a conversation prompt, intro requests, acceptance, and matched conversations.
-- Messages stored in Supabase and refreshed every five seconds, with recipient-only read receipts, unread badges, and a recent-first inbox with message previews; reports and blocks are stored in the database.
+- Messages stored in Supabase and refreshed every five seconds, with recipient-only read receipts, unread badges, and a recent-first inbox with message previews. Members can report a specific incoming message with a reason; moderators see its database-captured excerpt.
 - Optional social profile links with per-link Hidden, Matches only, and All signed-in members visibility.
 - Up to four photos per member in a private Supabase bucket, with a selectable cover photo. Signed-in, unblocked members can browse the gallery.
 - Safety & privacy page to review blocked members, unblock them, and end active matches.

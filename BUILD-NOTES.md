@@ -1,10 +1,14 @@
-# Vibely v0.15.0 build notes
+# Vibely v0.16.0 build notes
 
 This build uses the Spark Supabase project `qhnynlpnqsmytpodzmbx`. The app offers email and password sign-up, confirmation links, password recovery, profile setup for adults, photo galleries, discovery preferences, social profile links with per-link visibility, intro requests, accepted matches, chat, reporting, blocking, moderator review, and self-service account deletion.
 
 ## Email confirmation
 
 After sign-up without a session, members see a confirmation screen with their email and a resend action. An unconfirmed sign-in opens the same screen. Resend uses Supabase `/auth/v1/resend` with `type: signup` and a return URL to this app; the UI waits at least a minute between requests. Real email delivery and redirect configuration still require testing with a mailbox.
+
+## Message reporting
+
+Members can report an incoming message or a profile with a selected category and explanation. A database trigger verifies the reported message belongs to the other participant in an accepted match and copies the message text for moderator review, so the browser cannot invent the evidence. Existing reports default to Other. Migration: `supabase/20261123_message_reports.sql`.
 
 ## Profile personality
 
