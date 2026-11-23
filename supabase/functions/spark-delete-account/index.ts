@@ -54,7 +54,38 @@ Deno.serve(async (request: Request) => {
 
   const admin = createClient(url, secretKey, { auth: { persistSession: false } })
   const bucket = admin.storage.from('spark-profile-photos')
+  const chatBucket = admin.storage.from('spark-chat-media')
   try {
+    // Removing an Auth user cascades their matches and messages. Remove the
+    // private objects for both participants first so neither side is orphaned.
+    const { data: matches, error: matchError } = await admin.from('spark_connections')
+      .select('id,requester_id,recipient_id')
+      .or(`requester_id.eq.${user.id},recipient_id.eq.${user.id}`)
+      .limit(1000)
+    if (matchError) throw matchError
+    if ((matches || []).length === 1000) throw new Error('Too many matches for automatic media cleanup')
+    const removeMediaFolder = async (folder: string) => {
+      for (let page = 0; page < 100; page++) {
+        const { data: files, error } = await chatBucket.list(folder, { limit: 100, offset: 0 })
+        if (error) throw error
+        const paths = (files || []).filter(file => file.id && file.name).map(file => `${folder}/${file.name}`)
+        if (!paths.length) return
+        const { error: removeError } = await chatBucket.remove(paths)
+        if (removeError) throw removeError
+      }
+      throw new Error('Too many chat files for automatic cleanup')
+    }
+    for (const match of matches || []) {
+      await removeMediaFolder(`${match.requester_id}/${match.id}`)
+      await removeMediaFolder(`${match.recipient_id}/${match.id}`)
+    }
+    // Also remove any upload that failed before its message was posted.
+    const { data: ownFolders, error: folderError } = await chatBucket.list(user.id, { limit: 1000 })
+    if (folderError) throw folderError
+    if ((ownFolders || []).length === 1000) throw new Error('Too many chat folders for automatic cleanup')
+    for (const folder of ownFolders || []) {
+      if (!folder.id && folder.name) await removeMediaFolder(`${user.id}/${folder.name}`)
+    }
     // Storage objects must be removed through Storage before Auth user deletion.
     // Each member's photos are directly inside the folder named by their Auth ID.
     for (let page = 0; page < 20; page++) {

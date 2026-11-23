@@ -1,4 +1,4 @@
-# Vibely v0.17.0 build notes
+# Vibely v0.18.0 build notes
 
 This build uses the Spark Supabase project `qhnynlpnqsmytpodzmbx`. The app offers email and password sign-up, confirmation links, password recovery, profile setup for adults, photo galleries, discovery preferences, social profile links with per-link visibility, intro requests, accepted matches, chat, reporting, blocking, moderator review, and self-service account deletion.
 
@@ -25,6 +25,10 @@ The `spark_messages.read_at` column records when the recipient opens a matched c
 ## Sending limits
 
 The database limits each account to 25 intros in a rolling 24 hours and 30 chat messages per rolling minute. A transaction lock serializes concurrent sends from one member; server time sets creation timestamps and new messages start unread. The interface also prevents repeated clicks while a send is pending. Migration: `supabase/20261123_spam_limits.sql`. These limits need a real two-account check after deployment.
+
+## Rich chat
+
+Messages identify the sender and use separate left and right layouts. The composer accepts emojis and safe HTTPS links, takes or chooses a photo, and records a voice note on supported browsers. Tap the microphone once to start, again to stop and preview, then Send. The browser compresses photos to WebP; each uploaded image or audio note is capped at 5 MiB. A private Storage bucket checks active match membership before upload or download, and a message trigger verifies the uploaded file belongs to the sender and conversation. Migration: `supabase/20261123_chat_media.sql`. The account deletion function removes both participants' chat media before cascading their match. The media and two-account paths still require real device testing.
 
 ## Run locally
 
