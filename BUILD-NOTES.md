@@ -1,4 +1,4 @@
-# Vibely v0.16.0 build notes
+# Vibely v0.17.0 build notes
 
 This build uses the Spark Supabase project `qhnynlpnqsmytpodzmbx`. The app offers email and password sign-up, confirmation links, password recovery, profile setup for adults, photo galleries, discovery preferences, social profile links with per-link visibility, intro requests, accepted matches, chat, reporting, blocking, moderator review, and self-service account deletion.
 
@@ -21,6 +21,10 @@ Matched conversations are ordered by their latest visible message. The inbox sho
 ## Chat receipts
 
 The `spark_messages.read_at` column records when the recipient opens a matched conversation. A trigger stamps database time; only the recipient has a permitted update path, and the authenticated role can update only `read_at`, not message text. Both participants may read the timestamp on their accepted, active match. Unread messages appear in the desktop and mobile Chats badges. The active chat polls every five seconds; other views check unread counts every fifteen seconds. The migration is `supabase/20261123_message_receipts.sql`.
+
+## Sending limits
+
+The database limits each account to 25 intros in a rolling 24 hours and 30 chat messages per rolling minute. A transaction lock serializes concurrent sends from one member; server time sets creation timestamps and new messages start unread. The interface also prevents repeated clicks while a send is pending. Migration: `supabase/20261123_spam_limits.sql`. These limits need a real two-account check after deployment.
 
 ## Run locally
 
