@@ -1,6 +1,6 @@
-# Spark dating app project — Vibely v0.10.0
+# Spark dating app project — Vibely v0.11.0
 
-This folder contains Vibely v0.10.0: the mobile-first Spark beta connected to the separate `sparkapp` Supabase project (`qhnynlpnqsmytpodzmbx`).
+This folder contains Vibely v0.11.0: the mobile-first Spark beta connected to the separate `sparkapp` Supabase project (`qhnynlpnqsmytpodzmbx`).
 
 ## Put this project in the requested folder
 
@@ -15,6 +15,7 @@ Keep the files together in that folder. In the existing VS Code terminal, run `p
 ## Included in this build
 
 - Email and password sign-up, sign-in, session refresh, and profile setup for adults.
+- Password recovery by email with an in-app new-password form; email confirmation links return to the app.
 - Discovery from real registered profiles, intro requests, acceptance, and matched conversations.
 - Messages stored in Supabase and refreshed every five seconds; reports and blocks are stored in the database.
 - Optional social profile links with per-link Hidden, Matches only, and All signed-in members visibility.
@@ -31,6 +32,6 @@ Keep the files together in that folder. In the existing VS Code terminal, run `p
 
 ## Current limits
 
-Authentication and data storage are connected, but end-to-end signup, gallery upload, safety actions, moderation, account deletion, and two-account chat still need testing with real accounts and the public Vercel URL. Email confirmation redirect URLs may need updating in Supabase Authentication settings. No moderator account is assigned yet. Profiles self-report age. Identity review, social sign-in with Google/Facebook, payment/subscriptions, calls, and push notifications are still pending. Messages refresh by polling, not realtime subscriptions. Do not launch publicly until those requirements and adult verification are addressed.
+Authentication and data storage are connected, but end-to-end signup, password reset, gallery upload, safety actions, moderation, account deletion, and two-account chat still need testing with real accounts and the public Vercel URL. In Supabase Authentication → URL Configuration, set Site URL to `https://spark-plum-beta.vercel.app/` and add Redirect URLs `https://spark-plum-beta.vercel.app/` and `http://localhost:5173/`. No moderator account is assigned yet. Profiles self-report age. Identity review, social sign-in with Google/Facebook, payment/subscriptions, calls, and push notifications are still pending. Messages refresh by polling, not realtime subscriptions. Do not launch publicly until those requirements and adult verification are addressed.
 
 The app is branded **Vibely** because that is the name in the approved UI design. The requested working folder remains **D:\Spark dating app**.
