@@ -1,10 +1,14 @@
-# Vibely v0.13.0 build notes
+# Vibely v0.14.0 build notes
 
 This build uses the Spark Supabase project `qhnynlpnqsmytpodzmbx`. The app offers email and password sign-up, confirmation links, password recovery, profile setup for adults, photo galleries, discovery preferences, social profile links with per-link visibility, intro requests, accepted matches, chat, reporting, blocking, moderator review, and self-service account deletion.
 
 ## Email confirmation
 
 After sign-up without a session, members see a confirmation screen with their email and a resend action. An unconfirmed sign-in opens the same screen. Resend uses Supabase `/auth/v1/resend` with `type: signup` and a return URL to this app; the UI waits at least a minute between requests. Real email delivery and redirect configuration still require testing with a mailbox.
+
+## Chat inbox
+
+Matched conversations are ordered by their latest visible message. The inbox shows a preview, time, and unread count; a conversation without messages shows its intro. Previews are escaped before rendering. The inbox refreshes while open without replacing the message composer. The latest-message query uses a recent 500-message window; older quiet chats fall back to their match date.
 
 ## Chat receipts
 
