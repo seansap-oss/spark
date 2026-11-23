@@ -1,4 +1,4 @@
-# Vibely v0.5.0 build notes
+# Vibely v0.5.1 build notes
 
 This build uses the connected Spark Supabase project `qhnynlpnqsmytpodzmbx`. Social links are stored in `spark_social_links` with RLS-enforced visibility and a default of Hidden. Pasted links are not identity verification.
 
